@@ -18,16 +18,22 @@ var quotes = [
         picture: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Thomas_Jefferson_by_Rembrandt_Peale_1805_cropped.jpg"
     },
     {
+        quote: "The circulation of confidence is better than the circulation of money.",
+        source: "James Madison",
+        years: "1809-1817",
+        picture: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Hh_1789_05_04_madison_james_hc%281%29.jpg"
+    },
+    {
         quote: "It is by a thorough knowledge of the whole subject that [people] are enabled to judge correctly of the past and to give a proper direction to the future.",
         source: "James Monroe",
-        years: "1789-1797",
-        picture: "https://upload.wikimedia.org/wikipedia/commons/b/b7/GeorgeWashington.jpg"
+        years: "1817-1825",
+        picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/James_Monroe_02.jpg/716px-James_Monroe_02.jpg"
     },
     {
         quote: "If your actions inspire others to dream more, learn more, do more and become more, you are a leader",
         source: "John Quincy Adams",
-        years: "1789-1797",
-        picture: "https://upload.wikimedia.org/wikipedia/commons/b/b7/GeorgeWashington.jpg"
+        years: "1825-1829",
+        picture: "https://upload.wikimedia.org/wikipedia/commons/8/8b/John_Quincy_Adams_by_George_Caleb_Bingham%2C_c._1850_after_1844_original_-_DSC03234.JPG"
     },
     {
         quote: "It is easier to do a job right than to explain why you didn't.",
