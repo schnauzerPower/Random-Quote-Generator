@@ -30,7 +30,7 @@
                 $('h3').fadeIn(1000);
                 $('img').fadeIn(1000, function() {document.getElementById("newQuoteButton").disabled = false;});
                 $('p').fadeIn(1000);
-            }, 5000);
+            }, 30000);
         }
         
        timer();
