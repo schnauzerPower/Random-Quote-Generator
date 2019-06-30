@@ -22,7 +22,7 @@
         //Gets new president and background color every thirty seconds
         var timer = function() {
             interval =  setInterval(function() {
-                 $('h3').fadeOut(1, function() {document.getElementById("newQuoteButton").disabled = true;});
+                 $('h3').fadeOut(1, function() {document.getElementById("newQuoteButton").disabled = true;});  //prevent event queue from getting backed up by rapid clicking
                 $('img').fadeOut(1);
                 $('p').fadeOut(1);
                 getRandomBackgroundColor();
