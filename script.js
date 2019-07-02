@@ -3,54 +3,96 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
+//Set variable for setInterval timer
+var interval;
+//Create array of quotes
+var quotes = [
+    {
+        quote: "I am the master and the ruler of the world",
+        source: "Psycho Sid Vicious"
+    },
+    {
+        quote: "This right here is the future of wrestling. You can call this the New World Order of wrestling brother.",
+        source: "Hulk Hogan",
+        citation: "Bash at the Beach",
+        year: "1996",
+        video: "https://youtu.be/3hILCw66sLU"
+    },
+    {
+        quote: "I am the best there is, the best there was, and the best there ever will be",
+        source: "Bret Hart"
+    },
+    {
+        quote: "Even though we call ourselves sports entertainment because of the athleticism involved, the key word in that phrase is entertainment.",
+        source: "Vince McMahon",
+        citation: "Raw",
+        year: "1998",
+        video: "https://youtu.be/PjBeCwz2fXg"
+    },
+    {
+        quote: "Do you smell what the Rock is cooking?",
+        source: "The Rock"
+    },
+    {
+         quote: "And that's the bottom line because Stone Cold said so",
+         source: "Stone Cold Steve Austin"
+    }     
+];
 
+//random quote function that returns a quote object
+function getRandomQuote() {
+    var randomNumber = Math.floor(Math.random() * quotes.length);
+    return quotes[randomNumber];
+}
 
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
+//Function the pulls a random background color. Since the text is white, it selects darker colors only.
+function getRandomBackgroundColor() {
+            var red = Math.floor(Math.random() * 128);
+            var green = Math.floor(Math.random() * 128);
+            var blue = Math.floor(Math.random() * 128);
+            var backgroundColor = "rgb(" + red + "," + green + "," + blue + ")";
+            document.body.style.background = backgroundColor;
+}
 
+//Sets a timer so the quote will change every ten seconds if the button is not pressed
+var timer = function() {
+                interval =  setInterval(function() {
+                     $('p').fadeOut(1, function() {document.getElementById("loadQuote").disabled = true;});  //prevent event queue from getting backed up by rapid clicking
+                    getRandomBackgroundColor();
+                    printQuote();
+                    $('p').fadeIn(1000, function() {document.getElementById("loadQuote").disabled = false;});
+                }, 10000);
+            }
+        
+timer();
 
+//quote will be printed from this function when button is pressed. Pressing the button also resets the timer.
+function printQuote() {
+    getRandomBackgroundColor();
+    var randomQuote = getRandomQuote();
+    var html = "";
+    html += '<p class="quote">' + randomQuote.quote + '</p>';
+    html += '<p class="source">' + randomQuote.source;
+    //Check to see if object has citation property or not
+    if(!randomQuote.hasOwnProperty('citation')) {
+        html += '</p>'
+    }
+    else {
+        html += '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span><span class="video">(<a href="' + randomQuote.video +'">watch</a>)</span></p>';
+    }
+    
+    var output = document.getElementById('quote-box');
+    output.innerHTML = html;
+    
+    $('p').fadeOut(1, function() {document.getElementById("loadQuote").disabled = true;});  //disable button until new info has faded in completely to avoid backing up the queue on rapid clicks
+    $('p').fadeIn(1000, function() {document.getElementById("loadQuote").disabled = false;});
+    
+    //Reset setInterval timer and then start it again - Bhojendra Rauniyar at https://stackoverflow.com/questions/27037619/jquery-reset-setinterval-time
+    clearInterval(interval);
+    timer();   
+}
 
+printQuote();
 
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
-
-
-
-
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
-
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
+//printQuote function is called on button click
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.

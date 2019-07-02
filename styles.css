@@ -71,6 +71,19 @@ body {
   font-style: normal;
 }
 
+.video {
+    font-size: .9rem;
+}
+
+.video:before {
+    content: ", ";
+}
+
+a {
+    color: white;
+    font-size: .9rem;
+}
+
 #loadQuote {
   position: fixed;
   width: 12em;
