@@ -5,6 +5,7 @@ project 1 - A Random Quote Generator
 
 //Set variable for setInterval timer
 var interval;
+
 //Create array of quotes
 var quotes = [
     {
@@ -60,9 +61,9 @@ var timer = function() {
                      $('p').fadeOut(1, function() {document.getElementById("loadQuote").disabled = true;});  //prevent event queue from getting backed up by rapid clicking
                     getRandomBackgroundColor();
                     printQuote();
-                    $('p').fadeIn(1000, function() {document.getElementById("loadQuote").disabled = false;});
-                }, 10000);
-            }
+                    $('p').fadeIn(1000, function() {document.getElementById("loadQuote").disabled = false;}); //Allow button to be clicked again when 
+                }, 10000);                                                                                    //quote is loaded.
+}
         
 timer();
 
@@ -87,12 +88,13 @@ function printQuote() {
     $('p').fadeOut(1, function() {document.getElementById("loadQuote").disabled = true;});  //disable button until new info has faded in completely to avoid backing up the queue on rapid clicks
     $('p').fadeIn(1000, function() {document.getElementById("loadQuote").disabled = false;});
     
-    //Reset setInterval timer and then start it again - Bhojendra Rauniyar at https://stackoverflow.com/questions/27037619/jquery-reset-setinterval-time
+    //Reset setInterval timer and then start it again 
     clearInterval(interval);
     timer();   
 }
 
+//Load initial quote on page load
 printQuote();
 
 //printQuote function is called on button click
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote);
